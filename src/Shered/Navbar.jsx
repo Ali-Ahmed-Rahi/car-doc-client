@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/Provider";
+import { CiLogin } from "react-icons/ci";
+import { MdOutlineTouchApp } from "react-icons/md";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
-  const handleLogout=()=>{
+  const handleLogout = () => {
     logout()
-    .then(()=>{})
-    .then(err=>console.error(err)
-    )
-  }
+      .then(() => {})
+      .catch(err => console.error(err));
+  };
+
   const navlink = (
     <>
       {user?.email ? (
@@ -20,26 +22,31 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to='/bookings'>My Bookings</Link>
+            <Link to="/service/67a0d5e67328ad68c66948d2">Services</Link> 
           </li>
           <li>
-            <Link onClick={handleLogout}>LogOut</Link>
+            <Link to="/bookings">Bookings</Link>
+          </li>
+          <li>
+            <Link className="bg-red-600 text-white hover:bg-red-700" onClick={handleLogout}>LogOut</Link>
           </li>
         </>
       ) : (
         <>
           <li>
-            <Link to="/login">login</Link>
+            <Link className="bg-cyan-600 text-white hover:bg-cyan-700 w-25 font-bold" to="/register"> Register <span className="text-xl"><MdOutlineTouchApp /></span></Link>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+          
+            <Link className="bg-green-600 text-white hover:bg-green-700 w-25 font-bold" to="/login"><span className="text-xl"><CiLogin /></span> Login</Link>
           </li>
         </>
       )}
     </>
   );
+
   return (
-    <div className="navbar bg-white font-semibold ">
+    <div className="navbar bg-white font-semibold z-10">
       <div className="navbar-start z-10">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,15 +73,13 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="text-xl">
-          <img className="hidden lg:block w-20" src={logo} alt="" />
+          <img className="hidden lg:block w-20" src={logo} alt="Logo" />
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navlink}</ul>
+      <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-3">{navlink}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+      
     </div>
   );
 };

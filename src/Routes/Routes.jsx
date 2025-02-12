@@ -6,34 +6,45 @@ import Register from "../Pages/Register";
 import CheckOut from "../CheckOut/CheckOut";
 import PrivetRoute from "./PrivetRoute";
 import Orders from "../components/Orders/Orders";
-
+import Service from "../Pages/Service";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element:<Layout></Layout>,
-    children:[
+    element: <Layout></Layout>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: "/service/:id",
+        element: <PrivetRoute><Service></Service></PrivetRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/checkout/:id',
-        element:<CheckOut></CheckOut>,
-        loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:'/bookings',
-        element:<PrivetRoute><Orders></Orders></PrivetRoute>
+        path: "/checkout/:id",
+        element: <PrivetRoute><CheckOut></CheckOut></PrivetRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
       },
-    ]
+      {
+        path: "/bookings",
+        element: (
+          <PrivetRoute>
+            <Orders></Orders>
+          </PrivetRoute>
+        ),
+      },
+    ],
   },
 ]);

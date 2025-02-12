@@ -6,11 +6,11 @@ const OrdersRow = ({ booking ,handleDelete,handleBookingConfirm}) => {
 
 
   return (
-    <tr>
+    <tr className="font-semibold">
       <th>
         <button
           onClick={() => handleDelete(_id)}
-          className="btn btn-sm btn-circle"
+          className="btn btn-sm btn-circle bg-red-600 hover:bg-red-700 text-white hover:animate-pulse"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,12 +42,12 @@ const OrdersRow = ({ booking ,handleDelete,handleBookingConfirm}) => {
       <td>{customerName}</td>
       <td>{service}</td>
       <td>{date}</td>
-      <td>${price}</td>
+      <td className="font-bold text-yellow-500">${price}</td>
       <th>
         {status === "confirm" ? (
-          <span className="font-bold text-primary">Confirmed</span>
+          <span className="font-bold text-green-500">Confirmed</span>
         ) : (
-          <button onClick={() => handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
+          <button onClick={() => handleBookingConfirm(_id)} className="btn btn-sm bg-orange-500">Please Confirm</button>
         )}
       </th>
     </tr>

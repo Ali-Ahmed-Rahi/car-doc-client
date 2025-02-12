@@ -5,9 +5,9 @@ import Footer from "../Shered/Footer";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="space-y-10">
       <Navbar></Navbar>
-     <div className="min-h-screen max-w-7xl mx-auto">
+     <div className="min-h-screen max-w-7xl mx-auto ">
      <Outlet></Outlet>
      </div>
       <Footer></Footer>

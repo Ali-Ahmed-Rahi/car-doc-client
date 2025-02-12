@@ -4,7 +4,7 @@ import { RiCalendarScheduleFill } from "react-icons/ri";
 
 const Contact = () => {
   return (
-    <div className="bg-black flex justify-between p-10 md:p-20 rounded-lg">
+    <div className="bg-black flex-col md:flex-row lg:flex  lg:justify-between p-10 md:p-20 rounded-lg space-y-5">
       <div className="flex items-center text-3xl text-orange-500">
       <RiCalendarScheduleFill />
         <div className="ml-5 text-lg text-white font-semibold">

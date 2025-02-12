@@ -27,9 +27,9 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img1} alt="Car servicing" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent flex items-center justify-start p-16">
+            <div className="hidden md:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
-                <h2 className="text-5xl font-bold">
+                <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
                 </h2>
                 <p className="font-medium">
@@ -46,9 +46,9 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img2} alt="Car servicing" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent flex items-center justify-start p-16">
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
-                <h2 className="text-5xl font-bold">
+                <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
                 </h2>
                 <p className="font-medium">
@@ -65,9 +65,9 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img3} alt="Car servicing" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent flex items-center justify-start p-16">
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
-                <h2 className="text-5xl font-bold">
+                <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
                 </h2>
                 <p className="font-medium">
@@ -84,9 +84,9 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img5} alt="Car servicing" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent flex items-center justify-start p-16">
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
-                <h2 className="text-5xl font-bold">
+                <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
                 </h2>
                 <p className="font-medium">
@@ -103,9 +103,9 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img6} alt="Car servicing" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent flex items-center justify-start p-16">
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
-                <h2 className="text-5xl font-bold">
+                <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
                 </h2>
                 <p className="font-medium">

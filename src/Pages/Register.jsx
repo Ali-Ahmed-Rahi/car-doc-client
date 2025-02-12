@@ -25,12 +25,12 @@ const Register = () => {
     }
   }
   return (
-    <div className="flex justify-center items-center p-40 gap-5 ">
-      <div>
+    <div className="flex justify-center items-center p-40 gap-5 shadow-2xl border-2 hover:border-orange-600">
+      <div className='order-last'>
         <img src={img} alt="" />
       </div>
       <div>
-        <div className="w-full max-w-md p-8 space-y-3 rounded-xl border text-black">
+        <div className="w-full max-w-md p-8 space-y-3 rounded-xl border hover:border-orange-600 text-black">
           <h1 className="text-2xl font-bold text-center">Register</h1>
           <form onSubmit={handleSubmit} noValidate="" action="" className="space-y-6 font-semibold">
             <div className="space-y-1 text-sm">

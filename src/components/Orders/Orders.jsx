@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/Provider";
 import OrdersRow from "./OrdersRow";
 import Swal from "sweetalert2";
+import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 
 
 const Orders = () => {
@@ -53,29 +54,44 @@ const Orders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.modifiedCount > 0) {
           // upadated successfully
           const remaining=bookings.filter(booking=>booking._id!==id)
-          const upadated= bookings.find(booking=>booking._id===id)
-          upadated.status="confirm"
-          const newBookings=[upadated,...remaining]
+          const updated= bookings.find(booking=>booking._id===id)
+          updated.status="confirm"
+          const newBookings=[updated,...remaining]
           setBookings(newBookings)
         }
       });
   };
   return (
-    <div>
-      <h2 className="text-5xl">Your bookings: {bookings.length}</h2>
+    <div className="space-y-20 ">
+      <div className="relative w-full h-56 bg-gray-900 z-0">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url('https://i.ibb.co.com/Y7Qt6bMb/checkout.png')",
+                opacity: 0.5,
+              }}
+            ></div>
+      
+            <div className="relative z-10 flex flex-col justify-center items-start h-full space-y-5">
+              <h1 className="text-white text-5xl font-bold  w-full text-center">Your Bookings</h1>
+              <div className="text-orange-600 text-6xl w-full top-3/4 flex justify-center items-center animate-bounce ">
+              <MdOutlineKeyboardDoubleArrowDown />
+              </div>
+            
+            </div>
+          </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+                Delete
               </th>
               <th>Image</th>
               <th>Name</th>

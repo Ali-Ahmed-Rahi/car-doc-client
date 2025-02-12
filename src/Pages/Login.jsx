@@ -1,9 +1,10 @@
-import { Link, useNavigate,  } from 'react-router-dom';
+import { Link, useLocation, useNavigate,  } from 'react-router-dom';
 import img from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/Provider';
 import axios from 'axios';
 const Login = () => {
+  const location=useLocation()
   const navigate=useNavigate()
   const {login}=useContext(AuthContext)
   const handleSubmit = (e) => {
@@ -11,7 +12,7 @@ const Login = () => {
     const from=e.target
     const email=from.email.value
     const password=from.password.value
-    console.log(email,password);
+    
 
     login(email,password)
     .then(res=>{
@@ -21,9 +22,9 @@ const Login = () => {
       const user={email}
       axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
       .then(res=>{
-        console.log(res.data)
+        
         if (res.data.success) {
-          navigate('/')
+          navigate(location?.state ? location?.state:'/')
         }
       })
 
@@ -35,12 +36,12 @@ const Login = () => {
     })
   }
   return (
-    <div className='flex justify-center items-center p-40 gap-5 '>
+    <div className='flex justify-center items-center p-40 gap-5 shadow-2xl border-2 hover:border-orange-600'>
       <div>
         <img src={img} alt="" />
       </div>
       <div>
-        <div className="w-full max-w-md p-8 space-y-3 rounded-xl border text-black">
+        <div className="w-full max-w-md p-8 space-y-3 rounded-xl border hover:border-orange-600 text-black">
           <h1 className="text-2xl font-bold text-center">Login</h1>
           <form  onSubmit={handleSubmit} noValidate="" action="" className="space-y-6 font-semibold">
             <div className="space-y-1 text-sm">
