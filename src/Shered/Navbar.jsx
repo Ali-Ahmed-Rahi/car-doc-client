@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/Provider";
 import { CiLogin } from "react-icons/ci";
 import { MdOutlineTouchApp } from "react-icons/md";
+import { CgLogOut } from "react-icons/cg";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -19,16 +20,16 @@ const Navbar = () => {
       {user?.email ? (
         <>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="bg-orange-500 md:bg-white md:shadow-2xl" to="/">Home</Link>
           </li>
           <li>
-            <Link to="/service/67a0d5e67328ad68c66948d2">Services</Link> 
+            <Link className="bg-orange-500 md:bg-white md:shadow-2xl" to="/service/67a0d5e67328ad68c66948d2">Services</Link> 
           </li>
           <li>
-            <Link to="/bookings">Bookings</Link>
+            <Link className="bg-orange-500 md:bg-white md:shadow-2xl" to="/bookings">Bookings</Link>
           </li>
           <li>
-            <Link className="bg-red-600 text-white hover:bg-red-700" onClick={handleLogout}>LogOut</Link>
+            <Link className="bg-red-600 text-white hover:bg-red-700" onClick={handleLogout}>LogOut <CgLogOut /></Link>
           </li>
         </>
       ) : (
@@ -47,6 +48,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-white font-semibold z-10">
+      
       <div className="navbar-start z-10">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,14 +66,19 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
+          
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow gap-3"
           >
             {navlink}
+            
           </ul>
         </div>
+        <div className="md:hidden block">
+            <h2 className="text-xl font-bold">Car Doctor</h2>
+          </div>
         <Link to="/" className="text-xl">
           <img className="hidden lg:block w-20" src={logo} alt="Logo" />
         </Link>

@@ -11,10 +11,10 @@ const ServiceDetails = () => {
   const {img,title,description,facility}=service
   
   return (
-    <div className=" space-y-10 text-black">
-      <img className="w-full h-96 object-cover rounded-t-3xl" src={img} alt="" />
-      <div className="space-y-10">
-        <h2 className="text-5xl font-bold text-center">{title}</h2>
+    <div className=" md:space-y-10 text-black">
+      <img className="w-full md:h-96 object-cover md:rounded-t-3xl" src={img} alt="" />
+      <div className="space-y-10 mt-5">
+        <h2 className="text-5xl font-bold text-center ">{title}</h2>
         <p className="font-medium ">{description}</p>
         <div className="grid md:grid-cols-2 gap-4">
           {facility?.map((item, index) => (

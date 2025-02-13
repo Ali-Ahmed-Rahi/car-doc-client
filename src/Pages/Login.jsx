@@ -3,10 +3,17 @@ import img from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/Provider';
 import axios from 'axios';
+
+
+
 const Login = () => {
   const location=useLocation()
   const navigate=useNavigate()
   const {login}=useContext(AuthContext)
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const from=e.target
@@ -20,6 +27,7 @@ const Login = () => {
       console.log(loggedInUser);
       // get access token
       const user={email}
+      
       axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
       .then(res=>{
         

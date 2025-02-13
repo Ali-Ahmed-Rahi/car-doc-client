@@ -46,7 +46,7 @@ const ServiceCategory = () => {
       {/* Services Section */}
       <div className="bg-black  rounded-xl shadow-sm p-7 border">
         <h2 className="font-bold text-lg text-center text-white">Services</h2>
-        <div className="space-y-2 mt-3 ">
+        <div className="space-y-2 mt-3  ">
           {services.map((service, index) => (
             <Link
               to={`/service/${service._id}`}

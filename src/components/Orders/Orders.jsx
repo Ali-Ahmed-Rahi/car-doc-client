@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/Provider";
 import OrdersRow from "./OrdersRow";
 import Swal from "sweetalert2";
 import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
+import SmOrderCard from "./SmOrderCard";
 
 
 const Orders = () => {
@@ -85,7 +86,7 @@ const Orders = () => {
             
             </div>
           </div>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full hidden lg:block">
         <table className="table w-full">
           {/* head */}
           <thead>
@@ -113,7 +114,18 @@ const Orders = () => {
           </tbody>
         </table>
       </div>
+      <div className="lg:hidden block space-y-4">
+        {
+          bookings.map((booking)=><SmOrderCard 
+          key={booking._id}
+           booking={booking}
+           handleDelete={handleDelete}
+           handleBookingConfirm={handleBookingConfirm}
+           ></SmOrderCard>)
+        }
+      </div>
     </div>
+
   );
 };
 

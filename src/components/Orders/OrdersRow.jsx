@@ -6,7 +6,8 @@ const OrdersRow = ({ booking ,handleDelete,handleBookingConfirm}) => {
 
 
   return (
-    <tr className="font-semibold">
+   <>
+     <tr className="font-semibold ">
       <th>
         <button
           onClick={() => handleDelete(_id)}
@@ -51,6 +52,7 @@ const OrdersRow = ({ booking ,handleDelete,handleBookingConfirm}) => {
         )}
       </th>
     </tr>
+   </>
   );
 };
 
