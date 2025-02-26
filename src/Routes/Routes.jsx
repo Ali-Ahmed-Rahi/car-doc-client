@@ -19,9 +19,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/service/:id",
-        element: <PrivetRoute><Service></Service></PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <Service></Service>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-mocha-sigma.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -33,9 +39,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <PrivetRoute><CheckOut></CheckOut></PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <CheckOut></CheckOut>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-mocha-sigma.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/bookings",

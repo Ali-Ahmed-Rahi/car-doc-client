@@ -1,56 +1,54 @@
-import { Link, useLocation, useNavigate,  } from 'react-router-dom';
-import img from '../assets/images/login/login.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../Provider/Provider';
-import axios from 'axios';
-
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import img from "../assets/images/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/Provider";
+import axios from "axios";
 
 const Login = () => {
-  const location=useLocation()
-  const navigate=useNavigate()
-  const {login}=useContext(AuthContext)
-
-
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const from=e.target
-    const email=from.email.value
-    const password=from.password.value
-    
+    e.preventDefault();
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
 
-    login(email,password)
-    .then(res=>{
-      const loggedInUser=res.user
-      console.log(loggedInUser);
-      // get access token
-      const user={email}
-      axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
-      .then(res=>{
-        
-        if (res.data.success) {
-          navigate(location?.state ? location?.state:'/')
-        }
+    login(email, password)
+      .then((res) => {
+        const loggedInUser = res.user;
+        console.log(loggedInUser);
+        // get access token
+        const user = { email };
+        axios
+          .post("https://car-doctor-server-mocha-sigma.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            if (res.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          });
       })
-
-      
-    })
-    .catch(err=>{
-      console.error(err);
-      
-    })
-  }
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
-    <div className='flex justify-center items-center p-40 gap-5 shadow-2xl border-2 hover:border-orange-600'>
+    <div className="flex justify-center items-center p-40 gap-5 shadow-2xl border-2 hover:border-orange-600">
       <div>
         <img src={img} alt="" />
       </div>
       <div>
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl border hover:border-orange-600 text-black">
           <h1 className="text-2xl font-bold text-center">Login</h1>
-          <form  onSubmit={handleSubmit} noValidate="" action="" className="space-y-6 font-semibold">
+          <form
+            onSubmit={handleSubmit}
+            noValidate=""
+            action=""
+            className="space-y-6 font-semibold"
+          >
             <div className="space-y-1 text-sm">
               <label htmlFor="username" className="block text-black">
                 Your Email
@@ -123,7 +121,7 @@ const Login = () => {
           <p className="text-xs text-center sm:px-6 text-black">
             Don&apos;t have an account?
             <Link
-            to='/register'
+              to="/register"
               rel="noopener noreferrer"
               href="#"
               className="underline font-bold mx-1 text-black"

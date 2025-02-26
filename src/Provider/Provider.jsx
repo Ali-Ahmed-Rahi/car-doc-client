@@ -35,26 +35,36 @@ const Provider = ({ children }) => {
       const loggedInUser = { email: userEmail };
       setUser(currentUser);
       console.log("current user", currentUser);
-      setLoading(false)
+      setLoading(false);
       // if user is existing then issue token
       if (currentUser) {
-        axios.post("http://localhost:5000/jwt", loggedInUser, {
-            withCredentials: true,
-          }) // the withcredentials is from the backend
+        axios
+          .post(
+            "https://car-doctor-server-mocha-sigma.vercel.app/jwt",
+            loggedInUser,
+            {
+              withCredentials: true,
+            }
+          ) // the withcredentials is from the backend
           .then((res) => {
             console.log("token response", res.data);
           });
       } else {
-        axios.post('http://localhost:5000/logout',loggedInUser,{withCredentials:true})
-        .then(res=>{
-          console.log(res.data);
-        })
+        axios
+          .post(
+            "https://car-doctor-server-mocha-sigma.vercel.app/logout",
+            loggedInUser,
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
       }
     });
     return () => {
       return unsubscribe();
     };
-  }, [ user ]);
+  }, [user]);
   const authInfo = {
     user,
     loading,

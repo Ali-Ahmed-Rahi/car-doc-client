@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import img from '../../assets/logo.svg'
+import img from "../../assets/logo.svg";
 import { ScaleLoader } from "react-spinners";
 
 const ServiceCategory = () => {
@@ -9,13 +9,15 @@ const ServiceCategory = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
-  const [ active,setActive]=useState([false])
+  const [active, setActive] = useState([false]);
 
   // Fetch the services data from API
   useEffect(() => {
     async function getServices() {
       try {
-        const response = await fetch("http://localhost:5000/services");
+        const response = await fetch(
+          "https://car-doctor-server-mocha-sigma.vercel.app/services"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch services");
         }
@@ -32,13 +34,16 @@ const ServiceCategory = () => {
   }, []);
 
   // Select a service when clicked
-  const handleServiceClick = (id,index) => {
+  const handleServiceClick = (id, index) => {
     const service = services.find((service) => service._id === id);
     setSelectedService(service);
     setActive(index);
   };
 
-  if (loading) return <ScaleLoader color="#fd9205" className="h-screen w-screen mx-24 mt-40" />;
+  if (loading)
+    return (
+      <ScaleLoader color="#fd9205" className="h-screen w-screen mx-24 mt-40" />
+    );
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -52,11 +57,16 @@ const ServiceCategory = () => {
               to={`/service/${service._id}`}
               key={index}
               className={`btn w-48 font-bold ${
-                active === index ? "bg-red-500 text-white hover:bg-orange-600" : "bg-white text-black"
+                active === index
+                  ? "bg-red-500 text-white hover:bg-orange-600"
+                  : "bg-white text-black"
               }`}
-              onClick={() => handleServiceClick(service._id,index)} 
+              onClick={() => handleServiceClick(service._id, index)}
             >
-              {service.title} <span className="text-xl"><FaArrowRight /></span>
+              {service.title}{" "}
+              <span className="text-xl">
+                <FaArrowRight />
+              </span>
             </Link>
           ))}
         </div>
@@ -75,7 +85,9 @@ const ServiceCategory = () => {
                 <p>{item}</p>
                 <p className="text-xs text-gray-400">Download</p>
               </div>
-              <span className="text-xl bg-orange-500 p-1 rounded-2xl"><FaArrowRight /></span>
+              <span className="text-xl bg-orange-500 p-1 rounded-2xl">
+                <FaArrowRight />
+              </span>
             </button>
           ))}
         </div>
@@ -84,9 +96,7 @@ const ServiceCategory = () => {
       {/* Car Doctor Section */}
       <div className="bg-black p-6 rounded-xl text-white text-center shadow-sm">
         <div className="flex justify-center mb-3">
-          
-            <img  src={img} alt="" />
-          
+          <img src={img} alt="" />
         </div>
         <p className="text-white text-sm mt-1">
           Need Help? We Are Here To Help You
@@ -105,14 +115,21 @@ const ServiceCategory = () => {
       {/* Price Section */}
       {selectedService ? (
         <div className="text-center ">
-          <p className="text-lg font-semibold mb-5">Price: ${selectedService.price}</p>
-          <Link to={`/checkout/${selectedService._id}`} className="bg-red-500 text-white w-full p-3 rounded-lg font-semibold">
+          <p className="text-lg font-semibold mb-5">
+            Price: ${selectedService.price}
+          </p>
+          <Link
+            to={`/checkout/${selectedService._id}`}
+            className="bg-red-500 text-white w-full p-3 rounded-lg font-semibold"
+          >
             Proceed Checkout
           </Link>
         </div>
       ) : (
         <div className="text-center">
-          <p className="text-lg font-semibold bg-orange-600 text-white p-4 rounded-lg">Select a service to view price</p>
+          <p className="text-lg font-semibold bg-orange-600 text-white p-4 rounded-lg">
+            Select a service to view price
+          </p>
         </div>
       )}
     </div>

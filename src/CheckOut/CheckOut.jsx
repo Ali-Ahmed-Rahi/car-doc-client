@@ -25,9 +25,7 @@ const CheckOut = () => {
       price: price,
     };
 
-   
-
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctor-server-mocha-sigma.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,7 +34,6 @@ const CheckOut = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        
         if (data.insertedId) {
           Swal.fire({
             position: "center",
@@ -51,23 +48,23 @@ const CheckOut = () => {
   return (
     <div className="font-semibold space-y-16 ">
       <div className="relative w-full h-56 bg-black ">
-            <div
-              className="absolute inset-0 bg-cover bg-center "
-              style={{
-                backgroundImage:
-                  "url('https://i.ibb.co.com/Y7Qt6bMb/checkout.png')",
-                opacity: 0.5,
-              }}
-            ></div>
-      
-            <div className="relative z-10 flex flex-col justify-center items-start h-full space-y-5">
-              <h1 className="text-white text-5xl font-bold  w-full text-center"> {title}</h1>
-              
-            
-            </div>
-          </div>
+        <div
+          className="absolute inset-0 bg-cover bg-center "
+          style={{
+            backgroundImage:
+              "url('https://i.ibb.co.com/Y7Qt6bMb/checkout.png')",
+            opacity: 0.5,
+          }}
+        ></div>
+
+        <div className="relative z-10 flex flex-col justify-center items-start h-full space-y-5">
+          <h1 className="text-white text-5xl font-bold  w-full text-center">
+            {" "}
+            {title}
+          </h1>
+        </div>
+      </div>
       <div className="p-16 border bg-gray-300 shadow-2xl">
-        
         <form onSubmit={handleBookService}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="form-control">
