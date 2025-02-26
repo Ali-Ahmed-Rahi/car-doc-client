@@ -99,7 +99,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="md:hidden block">
-            <h2 className="text-xl font-bold">Car Doctor</h2>
+            <Link to="/" className="text-xl font-bold">Car Doctor</Link>
           </div>
         <Link to="/" className="text-xl">
           <img className="hidden lg:block w-20" src={logo} alt="Logo" />
