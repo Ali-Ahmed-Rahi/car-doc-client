@@ -47,7 +47,7 @@ const CheckOut = () => {
   };
   return (
     <div className="font-semibold space-y-16 ">
-      <div className="relative w-full h-56 bg-black ">
+      <div className="relative w-full h-56 bg-black">
         <div
           className="absolute inset-0 bg-cover bg-center "
           style={{
@@ -57,9 +57,8 @@ const CheckOut = () => {
           }}
         ></div>
 
-        <div className="relative z-10 flex flex-col justify-center items-start h-full space-y-5">
+        <div className="relative  flex flex-col justify-center items-start h-full space-y-5">
           <h1 className="text-white text-5xl font-bold  w-full text-center">
-            {" "}
             {title}
           </h1>
         </div>
@@ -135,7 +134,7 @@ const CheckOut = () => {
             />
           </div>
         </form>
-        <div className="card-body"></div>
+        
       </div>
     </div>
   );

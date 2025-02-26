@@ -46,7 +46,8 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img2} alt="Car servicing" />
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
+            <div className="hidden lg:block">
+            <div className=" absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
                 <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
@@ -59,13 +60,15 @@ const Banner = () => {
                   Discover More <FaArrowRight />
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img3} alt="Car servicing" />
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
+            <div className="hidden lg:block">
+            <div className=" absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
                 <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
@@ -78,13 +81,15 @@ const Banner = () => {
                   Discover More <FaArrowRight />
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img5} alt="Car servicing" />
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
+            <div className="hidden lg:block">
+            <div className=" absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
                 <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
@@ -97,13 +102,15 @@ const Banner = () => {
                   Discover More <FaArrowRight />
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative">
             <img className="w-full rounded-lg" src={img6} alt="Car servicing" />
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
+            <div className="hidden lg:block">
+            <div className=" absolute inset-0 bg-gradient-to-tr from-black to-transparent lg:flex items-center justify-start md:p-10 lg:p-16">
               <div className="text-white space-y-6">
                 <h2 className="md:text-5xl font-bold">
                   Affordable <br /> Price For Car Servicing
@@ -117,8 +124,10 @@ const Banner = () => {
                 </button>
               </div>
             </div>
+            </div>
           </div>
         </SwiperSlide>
+        
       </div>
     </Swiper>
   );
