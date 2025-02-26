@@ -17,8 +17,8 @@ const Login = () => {
 
     login(email, password)
       .then((res) => {
-        const loggedInUser = res.user;
-        console.log(loggedInUser);
+        // const loggedInUser = res.user;
+        
         // get access token
         const user = { email };
         axios

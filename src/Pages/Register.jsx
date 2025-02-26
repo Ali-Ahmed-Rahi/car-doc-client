@@ -15,8 +15,8 @@ const Register = () => {
     if(password===confirmPassword){
       createUser(email,password)
       .then(res=>{
-        const user=res.user
-        console.log(user);
+        // const user=res.user
+        // console.log(user);
       })
       .then(err=>{
         console.error(err);

@@ -18,7 +18,7 @@ const SmCategory = () => {
         const servicesData = await response.json();
         setServices(servicesData);
       } catch (err) {
-        console.log(err);
+        alert(err)
       } finally {
         setLoading(false);
       }

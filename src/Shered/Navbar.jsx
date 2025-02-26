@@ -28,7 +28,7 @@ const Navbar = () => {
           window.open(url, "_blank"); 
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
           alert("Unable to retrieve location. Please enable location services.");
         }
       );

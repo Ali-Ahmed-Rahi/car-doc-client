@@ -34,7 +34,7 @@ const Provider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedInUser = { email: userEmail };
       setUser(currentUser);
-      console.log("current user", currentUser);
+      // console.log("current user", currentUser);
       setLoading(false);
       // if user is existing then issue token
       if (currentUser) {
@@ -47,7 +47,7 @@ const Provider = ({ children }) => {
             }
           ) // the withcredentials is from the backend
           .then((res) => {
-            console.log("token response", res.data);
+            // console.log("token response", res.data);
           });
       } else {
         axios
@@ -57,7 +57,7 @@ const Provider = ({ children }) => {
             { withCredentials: true }
           )
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
           });
       }
     });
