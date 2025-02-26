@@ -6,7 +6,7 @@ const ServiceDetails = () => {
   const service=useLoaderData()
   
   if (!service) {
-    return <div>Error: Service not found</div>;
+    return <div><img src="https://i.ibb.co/4p1Y4kP/Spinner-1s-200px.gif" alt="" /></div>;
   }
   const {img,title,description,facility}=service
   

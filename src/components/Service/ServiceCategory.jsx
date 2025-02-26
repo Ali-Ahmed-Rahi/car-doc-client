@@ -112,7 +112,7 @@ const ServiceCategory = () => {
         </div>
       ) : (
         <div className="text-center">
-          <p className="text-lg font-semibold bg-orange-600 text-white p-4">Select a service to view price</p>
+          <p className="text-lg font-semibold bg-orange-600 text-white p-4 rounded-lg">Select a service to view price</p>
         </div>
       )}
     </div>

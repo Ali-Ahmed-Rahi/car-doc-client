@@ -6,8 +6,11 @@ import SmCategory from "../components/Service/SmCategory";
 
 const Service = () => {
   const services = useLoaderData(); // this useloaderdata give her children data automatically
+  if (!services) {
+    return <div><img src="https://i.ibb.co/4p1Y4kP/Spinner-1s-200px.gif" alt="" /></div>;
+  }
   return (
-    <div className="space-y-5 md:space-y-10">
+    <div className="space-y-5 md:space-y-10 ">
       <ServiceBanner services={services}></ServiceBanner>
       <div className="flex flex-col md:flex-row max-w-7xl md:mx-auto md:gap-10">
         <div className="md:w-4/5 order-2 md:order-1">
