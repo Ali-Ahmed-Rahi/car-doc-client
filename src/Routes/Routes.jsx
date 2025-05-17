@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-doctor-server-mocha-sigma.vercel.app/services/${params.id}`
+            `https://car-doctor-server-omega-six-54.vercel.app/services/${params.id}`
           ),
       },
       {
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-doctor-server-mocha-sigma.vercel.app/services/${params.id}`
+            `https://car-doctor-server-omega-six-54.vercel.app/services/${params.id}`
           ),
       },
       {

@@ -16,55 +16,87 @@ const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  //  Create User (Signup)
   const createUser = (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-  const login = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-  const logout = () => {
-    setLoading(true);
-    return signOut(auth);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUser(userCredential.user);
+        return userCredential.user;
+      })
+      .catch((error) => {
+        console.error("Signup Error:", error.message);
+        throw error;
+      })
+      .finally(() => setLoading(false));
   };
 
+  // Login User
+  const login = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUser(userCredential.user);
+        return userCredential.user;
+      })
+      .catch((error) => {
+        console.error("Login Error:", error.message);
+        throw error;
+      })
+      .finally(() => setLoading(false));
+  };
+
+  //  Logout User
+  const logout = () => {
+    setLoading(true);
+    return signOut(auth)
+      .then(() => {
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error("Logout Error:", error.message);
+        throw error;
+      })
+      .finally(() => setLoading(false));
+  };
+
+  //  Handle User State Changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail = currentUser?.email || user?.email;
-      const loggedInUser = { email: userEmail };
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      // console.log("current user", currentUser);
       setLoading(false);
-      // if user is existing then issue token
+
       if (currentUser) {
-        axios
-          .post(
-            "https://car-doctor-server-mocha-sigma.vercel.app/jwt",
+        try {
+          const token = await currentUser.getIdToken(); // Get Firebase ID token
+          const loggedInUser = { email: currentUser.email, token }; // Send token
+          await axios.post(
+            "https://car-doctor-server-omega-six-54.vercel.app/jwt",
             loggedInUser,
             {
               withCredentials: true,
             }
-          ) // the withcredentials is from the backend
-          .then((res) => {
-            // console.log("token response", res.data);
-          });
+          );
+        } catch (err) {
+          console.error("JWT Error:", err.response);
+        }
       } else {
-        axios
-          .post(
-            "https://car-doctor-server-mocha-sigma.vercel.app/logout",
-            loggedInUser,
+        try {
+          await axios.post(
+            "https://car-doctor-server-omega-six-54.vercel.app/logout",
+            {},
             { withCredentials: true }
-          )
-          .then((res) => {
-            // console.log(res.data);
-          });
+          );
+        } catch (err) {
+          console.error("Logout Error:", err.response);
+        }
       }
     });
-    return () => {
-      return unsubscribe();
-    };
-  }, [user]);
+
+    return () => unsubscribe();
+  }, []); // Removed `user` from dependencies
+
+  //  Auth Context Data
   const authInfo = {
     user,
     loading,
@@ -72,6 +104,7 @@ const Provider = ({ children }) => {
     login,
     logout,
   };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

@@ -25,7 +25,7 @@ const CheckOut = () => {
       price: price,
     };
 
-    fetch("https://car-doctor-server-mocha-sigma.vercel.app/bookings", {
+    fetch("https://car-doctor-server-omega-six-54.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -134,7 +134,6 @@ const CheckOut = () => {
             />
           </div>
         </form>
-        
       </div>
     </div>
   );

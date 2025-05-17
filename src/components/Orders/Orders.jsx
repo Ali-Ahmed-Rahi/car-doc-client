@@ -10,15 +10,19 @@ const Orders = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
 
-  const url = `https://car-doctor-server-mocha-sigma.vercel.app/bookings/${user?.email}`;
   useEffect(() => {
     axios
-      .get(url, { withCredentials: true })
+      .get(
+        `https://car-doctor-server-omega-six-54.vercel.app/bookings/${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => setBookings(res.data));
-  }, [url]);
+  }, [user?.email]);
 
   const handleDelete = (id) => {
-    fetch(`https://car-doctor-server-mocha-sigma.vercel.app/bookings/${id}`, {
+    fetch(`https://car-doctor-server-omega-six-54.vercel.app/bookings/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -46,7 +50,7 @@ const Orders = () => {
   };
 
   const handleBookingConfirm = (id) => {
-    fetch(`https://car-doctor-server-mocha-sigma.vercel.app/bookings/${id}`, {
+    fetch(`https://car-doctor-server-omega-six-54.vercel.app/bookings/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -101,26 +105,41 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking) => (
-              <OrdersRow
-                key={booking._id}
-                booking={booking}
-                handleDelete={handleDelete}
-                handleBookingConfirm={handleBookingConfirm}
-              ></OrdersRow>
-            ))}
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <OrdersRow
+                  key={booking._id}
+                  booking={booking}
+                  handleDelete={handleDelete}
+                  handleBookingConfirm={handleBookingConfirm}
+                ></OrdersRow>
+              ))
+            ) : (
+              <td
+                colSpan="7"
+                className="text-center text-4xl text-base-300 py-44 font-semibold"
+              >
+                [No Product Added]
+              </td>
+            )}
           </tbody>
         </table>
       </div>
       <div className="lg:hidden block space-y-4">
-        {bookings.map((booking) => (
-          <SmOrderCard
-            key={booking._id}
-            booking={booking}
-            handleDelete={handleDelete}
-            handleBookingConfirm={handleBookingConfirm}
-          ></SmOrderCard>
-        ))}
+        {bookings.length > 0 ? (
+          bookings.map((booking) => (
+            <SmOrderCard
+              key={booking._id}
+              booking={booking}
+              handleDelete={handleDelete}
+              handleBookingConfirm={handleBookingConfirm}
+            ></SmOrderCard>
+          ))
+        ) : (
+          <div className="text-center text-4xl text-base-300 py-44 font-semibold">
+            [No Product Added]
+          </div>
+        )}
       </div>
     </div>
   );

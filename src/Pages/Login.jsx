@@ -17,15 +17,17 @@ const Login = () => {
 
     login(email, password)
       .then((res) => {
-        // const loggedInUser = res.user;
-        
-        // get access token
+        const loggedInUser = res.data;
+        console.log(loggedInUser);
         const user = { email };
+        console.log(user);
+        // get access token
         axios
-          .post("https://car-doctor-server-mocha-sigma.vercel.app/jwt", user, {
+          .post("https://car-doctor-server-omega-six-54.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
+            console.log(res.data);
             if (res.data.success) {
               navigate(location?.state ? location?.state : "/");
             }
@@ -36,12 +38,12 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center p-40 gap-5 shadow-2xl border-2 hover:border-orange-600">
-      <div>
+    <div className="flex justify-center items-center md:p-40  gap-5 shadow-2xl border-2 hover:border-orange-600">
+      <div className="hidden md:block">
         <img src={img} alt="" />
       </div>
       <div>
-        <div className="w-full max-w-md p-8 space-y-3 rounded-xl border hover:border-orange-600 text-black">
+        <div className="p-8 space-y-3 rounded-xl border md:hover:border-orange-600 text-black">
           <h1 className="text-2xl font-bold text-center">Login</h1>
           <form
             onSubmit={handleSubmit}

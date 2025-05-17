@@ -28,7 +28,7 @@ const Navbar = () => {
           window.open(url, "_blank"); 
         },
         (err) => {
-          // console.log(err);
+          console.log(err);
           alert("Unable to retrieve location. Please enable location services.");
         }
       );
@@ -69,7 +69,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-white font-semibold z-10">
+    <div className="navbar bg-white font-semibold ">
       
       <div className="navbar-start z-10">
         <div className="dropdown">
@@ -109,8 +109,8 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-3">{navlink}</ul>
       </div>
       {/*  */}
-      <div className="fixed z-50 bottom-0 w-full bg-white shadow-2xl lg:hidden block">
-          <div className="flex justify-around items-center py-2">
+      <div className="fixed z-50 bottom-0 left-0 w-full shadow-2xl lg:hidden block ">
+          <div className="flex justify-around items-center py-2 bg-white">
             <a
               href="tel:+8801942432047 "
               className="flex flex-col items-center text-black"

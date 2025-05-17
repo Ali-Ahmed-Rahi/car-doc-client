@@ -12,7 +12,7 @@ const ServicesCard = ({ service }) => {
       <div className=" p-8 flex justify-between items-center space-y-3">
         <div className="space-y-2">
           <h2 className="card-title font-bold">{title}</h2>
-          <p className="text-xl text-orange-500">Price: ${price}</p>
+          <p className="text-xl text-orange-500">Price: ${parseFloat(price) || 0}</p>
         </div>
         <div>
           <Link to={`/checkout/${_id}`} className="text-3xl text-orange-500">

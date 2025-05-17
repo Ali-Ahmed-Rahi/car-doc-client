@@ -5,7 +5,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("https://car-doctor-server-mocha-sigma.vercel.app/services")
+    fetch("https://car-doctor-server-omega-six-54.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -23,7 +23,10 @@ const Services = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
         {services.map((service) => (
-          <ServicesCard key={service._id} service={service}></ServicesCard>
+          <ServicesCard
+            key={service._id}
+            service={{ ...service, price: parseFloat(service.price) }}
+          />
         ))}
       </div>
     </div>

@@ -16,7 +16,7 @@ const ServiceCategory = () => {
     async function getServices() {
       try {
         const response = await fetch(
-          "https://car-doctor-server-mocha-sigma.vercel.app/services"
+          "https://car-doctor-server-omega-six-54.vercel.app/services"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch services");
